@@ -17,6 +17,33 @@ task("accounts", "Prints the list of accounts", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4"
+  defaultNetwork: "localhost",
+  networks: {
+    localhost: {
+      url: "http://127.0.0.1:8545"
+    },
+    hardhat: {
+    },
+    bscTestnet: {
+      url: "https://eth-mainnet.alchemyapi.io/v2/123abc123abc123abc123abc123abcde",
+      // accounts: [privateKey1, privateKey2, ...]
+    }
+  },
+  solidity: "0.8.0",
+  settings: {
+    optimizer: {
+      enabled: true,
+      runs: 200
+    }
+  },
+  paths: {
+    sources: "./contracts",
+    tests: "./tests",
+    cache: "./cache",
+    artifacts: "./artifacts"
+  },
+  mocha: {
+    timeout: 20000
+  }
 };
 
